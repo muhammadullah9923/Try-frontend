@@ -7,7 +7,7 @@ export default function Navbar({ user, setUser }) {
 
   const handleLogout = async () => {
     try {
-      await fetch("http://3.226.254.81:8080/accounts/logout/", {
+      await fetch("https://tryandbuy.duckdns.org/accounts/logout/", {
         method: "POST",
         credentials: "include"
       });

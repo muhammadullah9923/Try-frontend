@@ -30,7 +30,7 @@ export default function VendorAddProduct({ vendorId, onProductAdded }) {
     Object.entries(form).forEach(([k, v]) => v && data.append(k, v));
     data.append("vendor_id", vendorId);
     try {
-      const res = await fetch("http://3.226.254.81:8080/api/vendor/add_product/", {
+      const res = await fetch("https://tryandbuy.duckdns.org/api/vendor/add_product/", {
         method: "POST",
         body: data
       });

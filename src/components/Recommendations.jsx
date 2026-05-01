@@ -17,7 +17,7 @@ export default function Recommendations({ user }) {
         const preview = localStorage.getItem('uploaded_preview');
         if (preview) setUploadedPreview(preview);
 
-        fetch(`http://3.226.254.81:8080/api/recommendations/${occasionId}/`)
+        fetch(`https://tryandbuy.duckdns.org/api/recommendations/${occasionId}/`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -47,7 +47,7 @@ export default function Recommendations({ user }) {
         const token = localStorage.getItem('auth_token');
         if (token) headers['X-Auth-Token'] = token;
 
-        fetch("http://3.226.254.81:8080/api/cart/add/", {
+        fetch("https://tryandbuy.duckdns.org/api/cart/add/", {
             method: "POST",
             headers,
             body: JSON.stringify({ product_id: product.id, quantity: 1 }),
@@ -110,7 +110,7 @@ export default function Recommendations({ user }) {
                     }}>
                         {/* Mock "Try-On" Result: Overlay the uploaded image on the product image (simplified) */}
                         <div style={{ position: 'relative', height: '220px', marginBottom: '1rem' }}>
-                            <img src={product.image ? (product.image.startsWith('http') ? product.image : `http://3.226.254.81:8080${product.image}`) : ''}
+                            <img src={product.image ? (product.image.startsWith('http') ? product.image : `https://tryandbuy.duckdns.org${product.image}`) : ''}
                                 alt={product.name}
                                 style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "12px" }}
                             />

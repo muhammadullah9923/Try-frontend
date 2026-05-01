@@ -9,7 +9,7 @@ export default function VendorReport({ vendorId }) {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`http://3.226.254.81:8080/api/vendor/${vendorId}/report/`);
+      const res = await fetch(`https://tryandbuy.duckdns.org/api/vendor/${vendorId}/report/`);
       const data = await res.json();
       if (data.success) setReport(data);
       else setError(data.message || "Failed to load report.");
