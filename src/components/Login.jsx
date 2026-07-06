@@ -22,7 +22,7 @@ export default function Login({ setUser }) {
     let data = null;
     let res = null;
     try {
-      res = await fetch("https://tryandbuy.duckdns.org/accounts/login/", {
+      res = await fetch("http://100.48.58.109:8080/accounts/login/", {
         method: "POST",
         body: formData,
         credentials: "include",

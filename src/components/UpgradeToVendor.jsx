@@ -22,7 +22,7 @@ export default function UpgradeToVendor({ user, setUser }) {
     setMessage({ type: "", text: "" });
 
     try {
-      const res = await fetch("https://tryandbuy.duckdns.org/accounts/upgrade_to_vendor/", {
+      const res = await fetch("http://100.48.58.109:8080/accounts/upgrade_to_vendor/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

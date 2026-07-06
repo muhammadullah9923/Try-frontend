@@ -25,7 +25,7 @@ export default function VendorEditProduct({ product, onUpdated }) {
     const data = new FormData();
     Object.entries(form).forEach(([k, v]) => v && data.append(k, v));
     try {
-      const res = await fetch(`https://tryandbuy.duckdns.org/api/vendor/edit_product/${product.id}/`, {
+      const res = await fetch(`http://100.48.58.109:8080/api/vendor/edit_product/${product.id}/`, {
         method: "POST",
         body: data
       });

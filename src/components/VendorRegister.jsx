@@ -35,7 +35,7 @@ export default function VendorRegister({ onRegistered, setUser }) {
     }
 
     try {
-      const res = await fetch("https://tryandbuy.duckdns.org/accounts/register_vendor/", {
+      const res = await fetch("http://100.48.58.109:8080/accounts/register_vendor/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

@@ -14,7 +14,7 @@ export default function AdminLogin({ setUser }) {
     setError("");
 
     try {
-      const res = await fetch("https://tryandbuy.duckdns.org/accounts/login/admin/", {
+      const res = await fetch("http://100.48.58.109:8080/accounts/login/admin/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
