@@ -9,6 +9,10 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
   const [step, setStep] = useState(1); // 1: upload, 2: processing, 3: result
   const toast = useToast();
 
+  if (!product) {
+    return null;
+  }
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -20,6 +24,10 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
   };
 
   const handleTryOn = async () => {
+    if (!product || !product.id) {
+      toast.error('Missing product details for virtual try-on.');
+      return;
+    }
     if (!user) {
       localStorage.setItem('post_login_action', JSON.stringify({ type: 'try_on', product_id: product.id }));
       window.location.href = '/login?next=/home';
@@ -55,6 +63,10 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
       
       if (data.success) {
         // Ensure URL is absolute
+        if (!data.result_image || typeof data.result_image !== 'string') {
+          throw new Error('Try-on completed but no result image was returned.');
+        }
+
         let imageUrl = data.result_image;
         if (!imageUrl.startsWith('http')) {
           imageUrl = `https://tryandbuy.duckdns.org${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`;
@@ -330,7 +342,7 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
                 Try Another Photo
               </button>
               <button 
-                onClick={() => { onAddToCart(); onClose(); }} 
+                onClick={() => { onAddToCart?.(); onClose?.(); }} 
                 style={{ 
                   padding: '0.8rem 2.5rem', 
                   borderRadius: '12px', 
