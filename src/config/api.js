@@ -1,7 +1,7 @@
 // API Configuration for SmartCart
 // In production, set VITE_API_URL environment variable to your deployed backend URL
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://100.48.58.109:8080';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://tryandbuy.duckdns.org';
 
 export const API_URL = API_BASE_URL;
 

@@ -34,7 +34,7 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
 
     try {
       console.log('🔄 Sending try-on request...');
-      const res = await fetch('http://100.48.58.109:8080/api/try-on/', {
+      const res = await fetch('https://tryandbuy.duckdns.org/api/try-on/', {
         method: 'POST',
         body: formData,
         credentials: 'include',
@@ -57,7 +57,7 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
         // Ensure URL is absolute
         let imageUrl = data.result_image;
         if (!imageUrl.startsWith('http')) {
-          imageUrl = `http://100.48.58.109:8080${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`;
+          imageUrl = `https://tryandbuy.duckdns.org${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`;
         }
         console.log('✓ Try-on successful! Result URL:', imageUrl);
         setResultImage(imageUrl);

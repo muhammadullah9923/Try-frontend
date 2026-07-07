@@ -19,7 +19,7 @@ export default function Home({ user }) {
 
   useEffect(() => {
     // Fetch Occasions
-    fetch('http://100.48.58.109:8080/api/occasions/')
+    fetch('https://tryandbuy.duckdns.org/api/occasions/')
       .then(r => r.json())
       .then(data => {
         if (data.success && data.occasions) {
@@ -34,7 +34,7 @@ export default function Home({ user }) {
       });
 
     // Fetch All Products
-    fetch('http://100.48.58.109:8080/api/products/')
+    fetch('https://tryandbuy.duckdns.org/api/products/')
       .then(r => r.json())
       .then(data => {
         if (data.success && data.products) {
@@ -157,14 +157,14 @@ export default function Home({ user }) {
     };
     
     console.log('🛒 Sending add to cart request:', {
-      url: "http://100.48.58.109:8080/api/cart/add/",
+      url: "https://tryandbuy.duckdns.org/api/cart/add/",
       method: "POST",
       headers,
       body: requestBody,
       credentials: "include"
     });
     
-    fetch("http://100.48.58.109:8080/api/cart/add/", {
+    fetch("https://tryandbuy.duckdns.org/api/cart/add/", {
       method: "POST",
       headers,
       credentials: "include",
@@ -386,7 +386,7 @@ export default function Home({ user }) {
                 >
                   <div className={styles.productImage}>
                     <img 
-                      src={product.image ? (product.image.startsWith('http') ? product.image : `http://100.48.58.109:8080${product.image}`) : 'https://via.placeholder.com/280x220?text=No+Image'}
+                      src={product.image ? (product.image.startsWith('http') ? product.image : `https://tryandbuy.duckdns.org${product.image}`) : 'https://via.placeholder.com/280x220?text=No+Image'}
                       alt={product.name}
                       onError={(e) => {
                         e.target.onerror = null;

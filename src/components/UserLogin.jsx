@@ -20,7 +20,7 @@ export default function UserLogin({ setUser }) {
     Object.keys(form).forEach((key) => formData.append(key, form[key]));
 
     try {
-      const res = await fetch("http://100.48.58.109:8080/accounts/login/user/", {
+      const res = await fetch("https://tryandbuy.duckdns.org/accounts/login/user/", {
         method: "POST",
         body: formData,
         credentials: "include",

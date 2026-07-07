@@ -270,7 +270,7 @@ function App() {
   const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
-    fetch("http://100.48.58.109:8080/accounts/current-user/", {
+    fetch("https://tryandbuy.duckdns.org/accounts/current-user/", {
       credentials: "include",
     })
       .then(res => res.json())

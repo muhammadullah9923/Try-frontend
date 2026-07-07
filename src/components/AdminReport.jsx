@@ -9,7 +9,7 @@ export default function AdminReport() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("http://100.48.58.109:8080/api/admin/report/");
+      const res = await fetch("https://tryandbuy.duckdns.org/api/admin/report/");
       const data = await res.json();
       if (data.success) setReport(data);
       else setError(data.message || "Failed to load report.");

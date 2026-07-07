@@ -33,7 +33,7 @@ export default function VendorProfile({ vendorId, vendorData, onUpdate }) {
     setMessage({ type: "", text: "" });
 
     try {
-      const res = await fetch(`http://100.48.58.109:8080/api/vendor/${vendorId}/update_profile/`, {
+      const res = await fetch(`https://tryandbuy.duckdns.org/api/vendor/${vendorId}/update_profile/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
