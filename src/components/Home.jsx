@@ -6,10 +6,6 @@ import { useRef } from "react";
 import { useToast } from "./Toast";
 
 export default function Home({ user }) {
-  const defaultOccasions = ["Wedding", "Casual", "Party", "Formal", "Sports", "Traditional", "Beach", "Office"].map(name => ({
-    id: name,
-    name,
-  }));
   const [occasions, setOccasions] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedOccasion, setSelectedOccasion] = useState("All");
@@ -26,24 +22,15 @@ export default function Home({ user }) {
     fetch('https://tryandbuy.duckdns.org/api/occasions/')
       .then(r => r.json())
       .then(data => {
-        const apiOccasions = Array.isArray(data?.occasions) ? data.occasions : [];
-        if (data.success && apiOccasions.length > 0) {
-          const normalizedOccasions = apiOccasions
-            .map((occ, index) => ({
-              id: occ.id ?? occ.name ?? occ.occasion ?? index,
-              name: occ.name ?? occ.occasion ?? occ.occasion_name ?? occ.title ?? "",
-            }))
-            .filter(occ => occ.name);
-          console.log('✓ Loaded occasions:', normalizedOccasions.length);
-          setOccasions(normalizedOccasions);
+        if (data.success && data.occasions) {
+          console.log('✓ Loaded occasions:', data.occasions.length);
+          setOccasions(data.occasions);
         } else {
           console.error('Failed to load occasions:', data);
-          setOccasions(defaultOccasions);
         }
       })
       .catch((error) => {
         console.error('Error fetching occasions:', error);
-        setOccasions(defaultOccasions);
       });
 
     // Fetch All Products
@@ -122,10 +109,7 @@ export default function Home({ user }) {
   };
 
   // Filtered occasions for search
-  const visibleOccasions = occasions.length > 0 ? occasions : defaultOccasions;
-  const filteredOccasions = occasionSearch.trim() === ""
-    ? visibleOccasions
-    : visibleOccasions.filter(occ => occ.name.toLowerCase().includes(occasionSearch.toLowerCase()));
+  const filteredOccasions = occasionSearch.trim() === "" ? occasions : occasions.filter(occ => occ.name.toLowerCase().includes(occasionSearch.toLowerCase()));
 
   const handleAddToCart = (product) => {
     // Validate product

@@ -57,7 +57,7 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
         // Ensure URL is absolute
         let imageUrl = data.result_image;
         if (!imageUrl.startsWith('http')) {
-          imageUrl = `http://100.48.58.109:8080${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`;
+          imageUrl = `https://tryandbuy.duckdns.org${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}`;
         }
         console.log('✓ Try-on successful! Result URL:', imageUrl);
         setResultImage(imageUrl);
