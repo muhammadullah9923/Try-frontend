@@ -34,7 +34,7 @@ export default function VirtualTryOn({ product, onClose, onAddToCart, user }) {
 
     try {
       console.log('🔄 Sending try-on request...');
-      const res = await fetch('http://100.48.58.109:8080/api/try-on/', {
+      const res = await fetch('https://tryandbuy.duckdns.org/api/try-on/', {
         method: 'POST',
         body: formData,
         credentials: 'include',
